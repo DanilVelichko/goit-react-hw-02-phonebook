@@ -1,0 +1,12 @@
+ul {
+    display: flex;
+    flex-direction: column;
+}
+li {
+    display: flex;
+    
+}
+
+p {
+    padding: 5px;
+}
