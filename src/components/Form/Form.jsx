@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './Form.module.css'
 
-
 class Form extends React.Component {
   state = {
       contacts: [],

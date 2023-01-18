@@ -5,24 +5,25 @@ import css from './ContactsList.module.css'
 class ContactsList extends React.Component {
   state = {
     contacts: this.props.arrContacts,
-  }
- 
+  };
+
   render() {
-    return (
-      <>
-        <h2>Contacts</h2>
-          <ul>
+    console.log(this.state.contacts)
+    return (   
+
+      <ul>
         {this.props.arrContacts.map(contact => {
           return (
-        <ContactsItem key={contact.id} name={contact.name} number={contact.number} />
-        )
-          
-      })}
-      
+            <ContactsItem
+              key={contact.id}
+              name={contact.name}
+              number={contact.number}
+            />
+          );
+        })}
       </ul>
-    </>
     );
   }
-};
+}
 
 export default ContactsList;

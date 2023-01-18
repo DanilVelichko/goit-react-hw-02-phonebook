@@ -1,7 +1,5 @@
 import React from 'react';
 import Form from './Form/Form';
-import ContactsList from './ContactsList/ContactsList';
-import ContactsItem from './ContactsItem/ContactsItem';
 import { nanoid } from 'nanoid';
 import Filter from './Filter/Filter';
 
