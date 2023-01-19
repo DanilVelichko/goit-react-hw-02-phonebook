@@ -10,3 +10,11 @@ li {
 p {
     padding: 5px;
 }
+
+.contacts_title {
+margin-bottom: 10px;
+}
+
+.contacts_input {
+margin-left: 10px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
-import css from './ContactsList.module.css'
+import css from './ContactsList.module.css';
 
 class ContactsList extends React.Component {
   state = {
@@ -8,14 +8,13 @@ class ContactsList extends React.Component {
   };
 
   render() {
-    console.log(this.state.contacts)
-    return (   
-
-      <ul>
-        {this.props.arrContacts.map(contact => {
+ 
+    return (
+      <ul className={css.contacts_list}>
+          {this.props.arrContacts.map(contact => {
           return (
             <ContactsItem
-              key={contact.id}
+              id={contact.id}
               name={contact.name}
               number={contact.number}
             />

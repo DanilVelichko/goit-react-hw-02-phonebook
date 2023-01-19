@@ -15,7 +15,7 @@ input {
     height: 25px;
 
 }
-button {
+.add_button {
     color:rgb(255, 255, 255);
     background-color: rgb(20, 18, 15);
     border: 1px solid grey;
@@ -28,4 +28,5 @@ button {
 }
 button:hover {
     background-color:orange;
+    border-color: transparent;
 }
