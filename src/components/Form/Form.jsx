@@ -1,6 +1,7 @@
 import React from 'react';
-import css from './Form.module.css';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types'
+import css from './Form.module.css';
 
 class Form extends React.Component {
   state = {
@@ -75,6 +76,15 @@ console.log(newObjContacts)
       </>
     );
   }
+}
+
+Form.propTypes = {
+  arrContacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+
+  })),
 }
 
 export default Form;

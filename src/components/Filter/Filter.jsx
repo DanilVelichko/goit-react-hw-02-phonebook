@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactsList from 'components/ContactsList/ContactsList';
+import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 
 class Filter extends React.Component {
@@ -9,22 +9,17 @@ class Filter extends React.Component {
 
   handleChange = event => {
     this.setState({ filter: event.target.value });
-    // const startDataContacts = [...this.props.arrContacts]
-    // console.log("Start filter", startDataContacts)
     let filteredContacts = [...this.props.arrContacts];
+    let beforeFilterContacts = [...this.props.arrContacts];
 
-    if (this.state.filter) {
+    if (this.state.filter || this.state.filter.length > 0) {
       filteredContacts = this.props.arrContacts.filter(contact =>
         contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
       );
       this.props.onDataUpdate(filteredContacts);
+    } else {
+      this.props.onDataUpdate(beforeFilterContacts);
     }
-    // if (this.state.filter.length === 0) {
-    //   filteredContacts = startDataContacts;
-
-    // this.props.onDataUpdate(filteredContacts);
-    // }
-    console.log(filteredContacts);
   };
 
   render() {
@@ -39,5 +34,13 @@ class Filter extends React.Component {
     );
   }
 }
-
+Filter.propTypes = {
+  arrContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
 export default Filter;

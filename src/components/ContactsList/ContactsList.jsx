@@ -1,6 +1,7 @@
 import React from 'react';
-import ContactsItem from 'components/ContactsItem/ContactsItem';
+import PropTypes from 'prop-types'
 import css from './ContactsList.module.css';
+import ContactsItem from 'components/ContactsItem/ContactsItem';
 
 class ContactsList extends React.Component {
 
@@ -15,7 +16,6 @@ class ContactsList extends React.Component {
               name={contact.name}
               number={contact.number}
               onDeleteBtn={this.props.onDeleteBtn}
-
             />
           );
         })}
@@ -23,5 +23,12 @@ class ContactsList extends React.Component {
     );
   }
 }
+ContactsList.propTypes = {
+  arrContacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  })),
 
+}
 export default ContactsList;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import css from './ContactsItem.module.css'
 
 const ContactsItem = ({ id, name, number, onDeleteBtn }) => {
@@ -14,5 +15,12 @@ const ContactsItem = ({ id, name, number, onDeleteBtn }) => {
     </li>
   );
 };
+
+ContactsItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDeleteBtn: PropTypes.func.isRequired,
+}
 
 export default ContactsItem;
