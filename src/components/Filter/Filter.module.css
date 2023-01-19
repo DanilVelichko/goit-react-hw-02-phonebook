@@ -18,3 +18,8 @@ margin-bottom: 10px;
 .contacts_input {
 margin-left: 10px;
 }
+
+.filter_title {
+    font-size: 16px;
+    margin-left: 12px
+}

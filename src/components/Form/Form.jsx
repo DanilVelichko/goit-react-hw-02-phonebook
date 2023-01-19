@@ -1,17 +1,15 @@
 import React from 'react';
 import css from './Form.module.css';
+import { nanoid } from 'nanoid';
 
 class Form extends React.Component {
   state = {
-    contacts: [],
-    filter: '',
     name: '',
     number: '',
   };
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
-
     this.setState({
       [name]: value,
     });
@@ -19,7 +17,14 @@ class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.clickSubmit({ ...this.state });
+console.log(e)
+    const newObjContacts = {
+      id: nanoid(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+console.log(newObjContacts)
+    this.props.clickSubmit(newObjContacts);
     this.reset();
   };
 
@@ -44,7 +49,7 @@ class Form extends React.Component {
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              Placeholder="Taras Shevchenko"
+              placeholder="Taras Shevchenko"
               required
             />
           </label>
@@ -58,12 +63,14 @@ class Form extends React.Component {
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              Placeholder="+38-12345678"
+              placeholder="+38-12345678"
               required
             />
           </label>
 
-          <button className={css.add_button} type="submit">Add contact</button>
+          <button className={css.add_button} type="submit">
+            Add contact
+          </button>
         </form>
       </>
     );
