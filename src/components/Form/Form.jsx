@@ -18,13 +18,13 @@ class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-console.log(e)
+
     const newObjContacts = {
       id: nanoid(),
       name: this.state.name,
       number: this.state.number,
     };
-console.log(newObjContacts)
+
     this.props.clickSubmit(newObjContacts);
     this.reset();
   };

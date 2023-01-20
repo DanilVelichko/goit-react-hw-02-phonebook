@@ -23,6 +23,7 @@ class ContactsList extends React.Component {
     );
   }
 }
+
 ContactsList.propTypes = {
   arrContacts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,

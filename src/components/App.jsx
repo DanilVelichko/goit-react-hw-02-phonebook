@@ -15,11 +15,10 @@ export class App extends React.Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
     const matchNameInput = this.state.contacts.filter(
       contact => contact.name === data.name
     );
-    console.log(matchNameInput);
+
     if (matchNameInput.length > 0) {
       alert(data.name + ' is already in contacts.');
     } else {
@@ -27,16 +26,22 @@ export class App extends React.Component {
     }
   };
 
-  handleDataUpdate = filteredContacts => {
-    console.log('Data', filteredContacts);
+  handleDataUpdate = input => {
+    this.setState({ filter: input });
 
-    this.setState({ filter: filteredContacts });
   };
 
-  onDeleteBtn = click => {
-    console.log(click);
+  filterContacts() {
+    const beforeFilterContacts = [...this.state.contacts];
+
+   return beforeFilterContacts.filter(contact =>
+        contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    )
+  }
+
+  onDeleteBtn = onDeleteBtn => {
     const updatedContacts = this.state.contacts.filter(
-      contact => contact.id !== click
+      contact => contact.id !== onDeleteBtn
     );
     this.setState({ ...this.state, contacts: updatedContacts });
   };
@@ -61,7 +66,7 @@ export class App extends React.Component {
           />
         ) : (
           <ContactsList
-            arrContacts={this.state.filter}
+            arrContacts={this.filterContacts()}
             onDeleteBtn={this.onDeleteBtn}
           />
         )}
