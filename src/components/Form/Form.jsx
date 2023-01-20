@@ -79,12 +79,8 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  arrContacts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-
-  })),
+clickSubmit: PropTypes.func,
+  
 }
 
 export default Form;

@@ -15,11 +15,11 @@ export class App extends React.Component {
   };
 
   formSubmitHandler = data => {
-    const matchNameInput = this.state.contacts.filter(
-      contact => contact.name === data.name
+    const matchNameInput = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === data.name.toLowerCase()
     );
 
-    if (matchNameInput.length > 0) {
+    if (matchNameInput) {
       alert(data.name + ' is already in contacts.');
     } else {
       this.setState(prev => ({ contacts: [...prev.contacts, data] }));
@@ -28,36 +28,29 @@ export class App extends React.Component {
 
   handleDataUpdate = input => {
     this.setState({ filter: input });
-
   };
 
   filterContacts() {
-    const beforeFilterContacts = [...this.state.contacts];
-
-   return beforeFilterContacts.filter(contact =>
+    if (this.state.filter !== '') {
+      return this.state.contacts.filter(contact =>
         contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-    )
+      );
+    }
   }
 
   onDeleteBtn = onDeleteBtn => {
     const updatedContacts = this.state.contacts.filter(
       contact => contact.id !== onDeleteBtn
     );
-    this.setState({ ...this.state, contacts: updatedContacts });
+    this.setState({ contacts: updatedContacts });
   };
 
   render() {
     return (
       <>
-        <Form
-          clickSubmit={this.formSubmitHandler}
-          arrContacts={this.state.contacts}
-        />
+        <Form clickSubmit={this.formSubmitHandler} />
 
-        <Filter
-          arrContacts={this.state.contacts}
-          onDataUpdate={this.handleDataUpdate}
-        />
+        <Filter onDataUpdate={this.handleDataUpdate} />
 
         {this.state.filter === '' ? (
           <ContactsList

@@ -4,7 +4,6 @@ import css from './Filter.module.css';
 class Filter extends React.Component {
   handleChange = event => {
     this.props.onDataUpdate(event.target.value);
-    
   };
 
   render() {

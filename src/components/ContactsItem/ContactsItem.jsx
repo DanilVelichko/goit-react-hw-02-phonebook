@@ -4,7 +4,7 @@ import css from './ContactsItem.module.css'
 
 const ContactsItem = ({ id, name, number, onDeleteBtn }) => {
   return (
-    <li className={css.contacts_item} id={id}>
+    <li className={css.contacts_item} key={id}>
       
         <div className={css.contacts_user}>
           <p className={css.contacts_name}>{name}: </p>
