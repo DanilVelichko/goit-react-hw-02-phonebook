@@ -38,13 +38,14 @@ export class App extends React.Component {
     } else {
       return this.state.contacts;
     }
-  }
+  };
 
   onDeleteBtn = onDeleteBtn => {
-    const updatedContacts = this.state.contacts.filter(
-      contact => contact.id !== onDeleteBtn
-    );
-    this.setState({ contacts: updatedContacts });
+  this.setState(prevState => ({
+      contacts: prevState.contacts.filter(
+        contact => contact.id !== onDeleteBtn
+      ),
+    }));
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
   };
   
@@ -70,5 +71,5 @@ export class App extends React.Component {
         />
       </>
     );
-  }
-}
+  };
+};
