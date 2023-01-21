@@ -47,6 +47,7 @@ export class App extends React.Component {
     this.setState({ contacts: updatedContacts });
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
   };
+  
   componentDidMount() {
     const getLocalStorageContacts = JSON.parse(
       localStorage.getItem('contacts')
