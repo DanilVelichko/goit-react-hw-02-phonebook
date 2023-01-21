@@ -18,9 +18,7 @@ export class App extends React.Component {
       alert(data.name + ' is already in contacts.');
     } else {
       this.setState(prev => ({ contacts: [...prev.contacts, data] }));
-      setTimeout(() => {
-        localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      }, 200);
+      this.localStorageSaveContacts();
     }
   };
 
@@ -46,9 +44,14 @@ export class App extends React.Component {
         contact => contact.id !== onDeleteBtn
       ),
     }));
-    localStorage.setItem('contacts', JSON.stringify(updatedContacts));
+    this.localStorageSaveContacts()
   };
 
+  localStorageSaveContacts() {
+    setTimeout(() => {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }, 200);
+  }
   componentDidMount() {
     const getLocalStorageContacts = JSON.parse(
       localStorage.getItem('contacts')
