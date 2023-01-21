@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import css from './Form.module.css';
 
 class Form extends React.Component {
@@ -79,8 +79,7 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-clickSubmit: PropTypes.func,
-  
-}
+  clickSubmit: PropTypes.func,
+};
 
 export default Form;

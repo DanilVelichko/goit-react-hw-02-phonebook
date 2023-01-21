@@ -33,8 +33,12 @@ export class App extends React.Component {
   filterContacts() {
     if (this.state.filter !== '') {
       return this.state.contacts.filter(contact =>
-        contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        contact.name
+          .toLowerCase()
+          .includes(this.state.filter.toLowerCase().trim())
       );
+    } else {
+      return this.state.contacts;
     }
   }
 
@@ -52,17 +56,10 @@ export class App extends React.Component {
 
         <Filter onDataUpdate={this.handleDataUpdate} />
 
-        {this.state.filter === '' ? (
-          <ContactsList
-            arrContacts={this.state.contacts}
-            onDeleteBtn={this.onDeleteBtn}
-          />
-        ) : (
-          <ContactsList
-            arrContacts={this.filterContacts()}
-            onDeleteBtn={this.onDeleteBtn}
-          />
-        )}
+        <ContactsList
+          arrContacts={this.filterContacts()}
+          onDeleteBtn={this.onDeleteBtn}
+        />
       </>
     );
   }
