@@ -5,12 +5,7 @@ import ContactsList from './ContactsList/ContactsList';
 
 export class App extends React.Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
 
@@ -22,7 +17,8 @@ export class App extends React.Component {
     if (matchNameInput) {
       alert(data.name + ' is already in contacts.');
     } else {
-      this.setState(prevState => ({ contacts: [...prevState.contacts, data] }));
+      this.setState(prev => ({ contacts: [...prev.contacts, data] }));
+      this.localStorageSaveContacts();
     }
   };
 
@@ -40,7 +36,7 @@ export class App extends React.Component {
     } else {
       return this.state.contacts;
     }
-  };
+  }
 
   onDeleteBtn = onDeleteBtn => {
     this.setState(prevState => ({
@@ -48,7 +44,22 @@ export class App extends React.Component {
         contact => contact.id !== onDeleteBtn
       ),
     }));
+    this.localStorageSaveContacts()
   };
+
+  localStorageSaveContacts() {
+    setTimeout(() => {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }, 200);
+  }
+  componentDidMount() {
+    const getLocalStorageContacts = JSON.parse(
+      localStorage.getItem('contacts')
+    );
+    if (getLocalStorageContacts !== null) {
+      this.setState({ contacts: getLocalStorageContacts });
+    }
+  }
 
   render() {
     return (
@@ -63,5 +74,5 @@ export class App extends React.Component {
         />
       </>
     );
-  };
-};
+  }
+}
