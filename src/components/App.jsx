@@ -40,7 +40,7 @@ export class App extends React.Component {
     } else {
       return this.state.contacts;
     }
-  }
+  };
 
   onDeleteBtn = onDeleteBtn => {
     this.setState(prevState => ({
@@ -63,5 +63,5 @@ export class App extends React.Component {
         />
       </>
     );
-  }
-}
+  };
+};
