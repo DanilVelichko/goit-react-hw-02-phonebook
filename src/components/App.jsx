@@ -38,17 +38,17 @@ export class App extends React.Component {
     } else {
       return this.state.contacts;
     }
-  };
+  }
 
   onDeleteBtn = onDeleteBtn => {
-  this.setState(prevState => ({
+    this.setState(prevState => ({
       contacts: prevState.contacts.filter(
         contact => contact.id !== onDeleteBtn
       ),
     }));
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
   };
-  
+
   componentDidMount() {
     const getLocalStorageContacts = JSON.parse(
       localStorage.getItem('contacts')
@@ -71,5 +71,5 @@ export class App extends React.Component {
         />
       </>
     );
-  };
-};
+  }
+}
