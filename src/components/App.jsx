@@ -22,7 +22,7 @@ export class App extends React.Component {
     if (matchNameInput) {
       alert(data.name + ' is already in contacts.');
     } else {
-      this.setState(prev => ({ contacts: [...prev.contacts, data] }));
+      this.setState(prevState => ({ contacts: [...prevState.contacts, data] }));
     }
   };
 
@@ -43,10 +43,11 @@ export class App extends React.Component {
   }
 
   onDeleteBtn = onDeleteBtn => {
-    const updatedContacts = this.state.contacts.filter(
-      contact => contact.id !== onDeleteBtn
-    );
-    this.setState({ contacts: updatedContacts });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(
+        contact => contact.id !== onDeleteBtn
+      ),
+    }));
   };
 
   render() {
